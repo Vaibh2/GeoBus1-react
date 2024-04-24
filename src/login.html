@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Student Portal</title>
+</head>
+<body>
+    <div id="login-container">
+        <h2>Login to Student Portal</h2>
+        <form action="submit_login.php" method="POST" onsubmit="handleLogin(event)">
+            <input type="text" name="roll_number" placeholder="Roll Number">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" value="Login" class="button">
+        </form>
+    </div>
+
+    <div id="map-container" style="display: none;">
+        <!-- This div will be used to render the Map component -->
+    </div>
+
+    <!-- Include React and ReactDOM -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Include Babel to compile JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Include Map component -->
+    <script type="text/babel" src="Map.js"></script>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // You can add your login logic here
+            
+            // If login is successful, show the map
+            document.getElementById("login-container").style.display = "none";
+            document.getElementById("map-container").style.display = "block";
+
+            // Render the Map component
+            ReactDOM.render(
+                React.createElement(Map),
+                document.getElementById("map-container")
+            );
+        }
+    </script>
+</body>
+</html>
